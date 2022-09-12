@@ -29,7 +29,7 @@ public:
     // functions that were helpfull for testing and creating logic of countNeighbours... method
 
 private:
-    int m_Length{};
-    int m_Height{};
-    std::vector<bool> m_Cells{};
+    int m_length{};
+    int m_height{};
+    std::vector<bool> m_cells{};
 };
