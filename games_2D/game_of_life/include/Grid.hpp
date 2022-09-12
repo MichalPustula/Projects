@@ -15,6 +15,7 @@ public:
     void clearGrid();
 
     int countNeighboursOfCell(bool state, int x, int y) const;
+    int countNeighboursOfCell(bool state, int index);
 
     void nextGeneration();
 

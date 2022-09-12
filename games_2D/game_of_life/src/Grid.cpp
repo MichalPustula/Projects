@@ -37,7 +37,35 @@ void Grid::clearGrid()
 void Grid::nextGeneration()
 {
     std::vector<bool> next_generation;
+    next_generation.resize(m_length*m_height);
+    next_generation = m_cells;
 
+    for (int i = 0; i < ((m_length*m_height) - 1); i++)
+    {
+        if (m_cells.at(i) == true && countNeighboursOfCell(true, i) == 2) {continue;}
+        if (m_cells.at(i) == true && countNeighboursOfCell(true, i) == 3) {continue;}
+
+        if (m_cells.at(i) == false && countNeighboursOfCell(true, i) == 3)
+        {
+            next_generation.at(i).flip();
+            continue;
+        }
+
+        if (m_cells.at(i) == true)
+        {
+            next_generation.at(i).flip();
+        }
+    }
+
+    m_cells = next_generation;
+}
+
+int Grid::countNeighboursOfCell(bool state, int index)
+{
+    int x = (index + 1) - ((index / m_length)*m_length);
+    int y = (((index + 1) / m_length ) + 1 );
+
+    return countNeighboursOfCell(state, x, y);
 }
 
 

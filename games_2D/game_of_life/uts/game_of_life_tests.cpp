@@ -2,6 +2,62 @@
 #include "../include/Grid.hpp"
 
 
+TEST(GameplayTests, advancedShape)
+{
+    Grid grid(7,5);
+    grid.setCell(4,1);
+    grid.setCell(5,2);
+    grid.setCell(3,3);
+    grid.setCell(4,3);
+    grid.setCell(5,3);
+
+    grid.printGrid();
+
+    grid.nextGeneration();
+    grid.printGrid();
+
+    grid.nextGeneration();
+    grid.printGrid();
+
+    grid.nextGeneration();
+    grid.printGrid();
+}
+
+TEST(GameplayTests, fewIterationsOfNextGenerations)
+{
+    Grid grid(7,5);
+    grid.setCell(5,2);
+    grid.setCell(5,3);
+    grid.setCell(5,4);
+
+    grid.printGrid();
+
+    grid.nextGeneration();
+    grid.printGrid();
+
+    grid.nextGeneration();
+    grid.printGrid();
+
+    grid.nextGeneration();
+    grid.printGrid();
+}
+
+TEST(GameplayTests, nextGeneration)
+{
+    Grid grid(7,5);
+    grid.setCell(5,2);
+    grid.setCell(5,3);
+    grid.setCell(5,4);
+    EXPECT_EQ(grid.countNeighboursOfCell(true, 4,3), 3);
+    EXPECT_FALSE(grid.getCell(4,3));
+    grid.printGrid();
+    grid.nextGeneration();
+    grid.printGrid();
+    EXPECT_TRUE(grid.getCell(4,3));
+
+    
+}
+
 TEST(GridTests, setAllNeighboursInCorner)
 {
     Grid grid(7,5);
