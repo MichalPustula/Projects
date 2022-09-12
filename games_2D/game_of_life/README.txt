@@ -6,14 +6,20 @@ to compile and run on linux:
 in terminal type:
 cmake ..
 make
-./sample_test
+./game_of_life_tests
 
 project:
 purpose of this project is to write implementation of 2D game of life
 
+- origin of the grid is in left up corner
+
 to do:
 
-write getAliveNeighbours(int index) method - in progress
+- consider if std::vector<bool> and at() method are optimal choices for data storing and acces.
+
+- write countNeighboursOfCell(bool state, int x, int y) method - in progress
+
+- how to handle methods like clearGrid(), additional set functions, which are usefull for testing but should be hidden from user.
 
 find solution to problem with polimorphism
 - there is needed the same implementation of method that in one use case 
