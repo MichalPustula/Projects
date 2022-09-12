@@ -34,6 +34,12 @@ void Grid::clearGrid()
     }
 }
 
+void Grid::nextGeneration()
+{
+    std::vector<bool> next_generation;
+
+}
+
 
 
 int Grid::countNeighboursOfCell(bool state, int x, int y) const

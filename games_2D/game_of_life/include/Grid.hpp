@@ -11,10 +11,12 @@ public:
 
     bool getCell(int x, int y) const;
 
-    void printGrid()const;
+    void printGrid() const;
     void clearGrid();
 
     int countNeighboursOfCell(bool state, int x, int y) const;
+
+    void nextGeneration();
 
     void setCellU(int x, int y);
     void setCellUR(int x, int y);
@@ -24,7 +26,7 @@ public:
     void setCellDL(int x, int y);
     void setCellL(int x, int y);
     void setCellUL(int x, int y);
-
+    // functions that were helpfull for testing and creating logic of countNeighbours... method
 
 private:
     int m_Length{};
