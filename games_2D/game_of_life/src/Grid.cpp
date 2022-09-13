@@ -40,7 +40,7 @@ void Grid::nextGeneration()
     next_generation.resize(m_length*m_height);
     next_generation = m_cells;
 
-    for (int i = 0; i < ((m_length*m_height) - 1); i++)
+    for (int i = 0; i < (m_length*m_height); i++)
     {
         if (m_cells.at(i) == true && countNeighboursOfCell(true, i) == 2) {continue;}
         if (m_cells.at(i) == true && countNeighboursOfCell(true, i) == 3) {continue;}
@@ -63,7 +63,7 @@ void Grid::nextGeneration()
 int Grid::countNeighboursOfCell(bool state, int index)
 {
     int x = (index + 1) - ((index / m_length)*m_length);
-    int y = (((index + 1) / m_length ) + 1 );
+    int y = (((index) / m_length ) + 1 );
 
     return countNeighboursOfCell(state, x, y);
 }

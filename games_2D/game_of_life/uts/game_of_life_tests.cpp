@@ -2,7 +2,7 @@
 #include "../include/Grid.hpp"
 
 
-TEST(GameplayTests, advancedShape)
+TEST(GameplayTests, creatingGliderAdvancedShape)
 {
     Grid grid(7,5);
     grid.setCell(4,1);
@@ -12,12 +12,43 @@ TEST(GameplayTests, advancedShape)
     grid.setCell(5,3);
 
     grid.printGrid();
+    std::cout << std::endl;
 
     grid.nextGeneration();
     grid.printGrid();
+    std::cout << std::endl;
 
     grid.nextGeneration();
     grid.printGrid();
+    std::cout << std::endl;
+
+    grid.nextGeneration();
+    grid.printGrid();
+    std::cout << std::endl;
+
+    grid.nextGeneration();
+    grid.printGrid();
+    std::cout << std::endl;
+
+    grid.nextGeneration();
+    grid.printGrid();
+    std::cout << std::endl;
+
+    grid.nextGeneration();
+    grid.printGrid();
+    std::cout << std::endl;
+
+    grid.nextGeneration();
+    grid.printGrid();
+    std::cout << std::endl;
+
+    grid.nextGeneration();
+    grid.printGrid();
+    std::cout << std::endl;
+
+    grid.nextGeneration();
+    grid.printGrid();
+    std::cout << std::endl;
 
     grid.nextGeneration();
     grid.printGrid();
@@ -54,8 +85,6 @@ TEST(GameplayTests, nextGeneration)
     grid.nextGeneration();
     grid.printGrid();
     EXPECT_TRUE(grid.getCell(4,3));
-
-    
 }
 
 TEST(GridTests, setAllNeighboursInCorner)
