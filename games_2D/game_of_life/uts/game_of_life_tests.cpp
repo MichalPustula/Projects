@@ -2,7 +2,7 @@
 #include "../include/Grid.hpp"
 
 
-TEST(GameplayTests, creatingGliderAdvancedShape)
+TEST(GameplayTests, creatingGliderAdvancedShapePrintingFewGenerations)
 {
     Grid grid(7,5);
     grid.setCell(4,1);
@@ -14,44 +14,12 @@ TEST(GameplayTests, creatingGliderAdvancedShape)
     grid.printGrid();
     std::cout << std::endl;
 
-    grid.nextGeneration();
-    grid.printGrid();
-    std::cout << std::endl;
-
-    grid.nextGeneration();
-    grid.printGrid();
-    std::cout << std::endl;
-
-    grid.nextGeneration();
-    grid.printGrid();
-    std::cout << std::endl;
-
-    grid.nextGeneration();
-    grid.printGrid();
-    std::cout << std::endl;
-
-    grid.nextGeneration();
-    grid.printGrid();
-    std::cout << std::endl;
-
-    grid.nextGeneration();
-    grid.printGrid();
-    std::cout << std::endl;
-
-    grid.nextGeneration();
-    grid.printGrid();
-    std::cout << std::endl;
-
-    grid.nextGeneration();
-    grid.printGrid();
-    std::cout << std::endl;
-
-    grid.nextGeneration();
-    grid.printGrid();
-    std::cout << std::endl;
-
-    grid.nextGeneration();
-    grid.printGrid();
+    for (int i = 0; i < 10; i++)
+    {
+        grid.nextGeneration();
+        grid.printGrid();
+        std::cout << std::endl;
+    }
 }
 
 TEST(GameplayTests, fewIterationsOfNextGenerations)
@@ -63,14 +31,11 @@ TEST(GameplayTests, fewIterationsOfNextGenerations)
 
     grid.printGrid();
 
-    grid.nextGeneration();
-    grid.printGrid();
-
-    grid.nextGeneration();
-    grid.printGrid();
-
-    grid.nextGeneration();
-    grid.printGrid();
+    for (int i = 0; i < 4; i++)
+    {
+        grid.nextGeneration();
+        grid.printGrid();
+    }
 }
 
 TEST(GameplayTests, nextGeneration)
@@ -81,9 +46,7 @@ TEST(GameplayTests, nextGeneration)
     grid.setCell(5,4);
     EXPECT_EQ(grid.countNeighboursOfCell(true, 4,3), 3);
     EXPECT_FALSE(grid.getCell(4,3));
-    grid.printGrid();
     grid.nextGeneration();
-    grid.printGrid();
     EXPECT_TRUE(grid.getCell(4,3));
 }
 

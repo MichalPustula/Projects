@@ -12,7 +12,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
-add_executable(game_of_life_tests uts/game_of_life_tests.cpp src/Grid.cpp)
+add_executable(game_of_life_tests src/Game.cpp uts/game_of_life_tests.cpp src/Grid.cpp)
 target_include_directories(game_of_life_tests PUBLIC include)
 target_link_libraries(game_of_life_tests gmock_main gtest gmock)
 target_compile_features(game_of_life_tests PUBLIC cxx_std_20)
