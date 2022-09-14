@@ -8,7 +8,7 @@ Game::Game(int length, int height)
 
 void Game::play()
 {
-    for (int i = 0; i < 200; i++)
+    for (int i = 0; i < 400; i++)
     {
         std::cout << "to continue press enter, to stop type anything" << '\n';
         m_grid->printGrid();
@@ -26,6 +26,22 @@ void Game::placeGlider(int x, int y)
     m_grid->setCell(x+1,y);
     m_grid->setCell(x+2,y+1);
     m_grid->setCell(x+2,y+2);
+}
+
+void Game::placeSpaceShip(int x, int y)
+{
+    m_grid->setCell(x, y+1);
+    m_grid->setCell(x, y+2);
+    m_grid->setCell(x+1, y);
+    m_grid->setCell(x+1, y+1);
+    m_grid->setCell(x+1, y+2);
+    m_grid->setCell(x+2, y);
+    m_grid->setCell(x+2, y+1);
+    m_grid->setCell(x+2, y+3);
+    m_grid->setCell(x+3, y+1);
+    m_grid->setCell(x+3, y+2);
+    m_grid->setCell(x+3, y+3);
+    m_grid->setCell(x+4, y+2);
 }
 
 

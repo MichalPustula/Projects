@@ -4,7 +4,10 @@
 
 int main()
 {
-    Game game(10,15);
-    game.placeGlider(1,1);
+    Game game(15,20);
+    game.placeGlider(2,16);
+    game.placeSpaceShip(2,2);
+    game.placeSpaceShip(3,8);
+
     game.play();
 }

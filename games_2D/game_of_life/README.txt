@@ -21,13 +21,16 @@ purpose of this project is to write implementation of 2D game of life
 
 to do:
 
+- write methods to place and rotate shapes with wall checking
+
 - refactor tests after they are no longer usefull - keeping old tests as history of tdd.
 
 - consider if std::vector<bool> and at() method are optimal choices for data storing and acces.
 
 - write countNeighboursOfCell(bool state, int x, int y) method - done
 
--  find how to handle methods like clearGrid(), additional set functions, which are usefull for testing but should be hidden from user - release and debuggin versions?
+-  find how to handle methods like clearGrid(), additional set functions, which are usefull for testing but should be hidden from user -
+release and test versions?, functions that sets neighbours should be first getters for single neighbours and then replaced by countNeighboursOfCell().
 
 find solution to problem with polimorphism
 - there is needed the same implementation of method that in one use case 

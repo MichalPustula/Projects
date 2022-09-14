@@ -12,6 +12,7 @@ public:
 
     void play();
     void placeGlider(int x, int y);
+    void placeSpaceShip(int x, int y);
 
 private:
 

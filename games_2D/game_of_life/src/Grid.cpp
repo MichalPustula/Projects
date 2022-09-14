@@ -20,7 +20,7 @@ void Grid::printGrid() const
         for (int x = 1; x <= m_length; x++)
         {
             if(getCell(x, y) == true) { std::cout << " o "; }
-            else                      { std::cout << " . "; }
+            else                      { std::cout << "   "; }
         }
         std::cout << std::endl;
     }
