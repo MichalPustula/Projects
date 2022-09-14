@@ -2,7 +2,6 @@
 #include "../include/Grid.hpp"
 
 
-
 int main()
 {
     Game game(10,15);

@@ -1,12 +1,18 @@
-to compile and run tests on linux: (requires gtest, CMake, gcc)
+to compile and run on linux: (requires gtest, CMake, gcc)
 
 - in GameOfLife folder create build folder
 - open terminal in build folder
 
 in terminal type:
-cmake ..
-make
-./game_of_life_tests
+$ cmake ..
+
+- $ make run_game
+or
+- $ make run_tests
+
+to compile and run without CMake, open terminal in game_of_life folder, then type:
+$ g++ src/main.cpp src/Game.cpp src/Grid.cpp
+$ ./a.out
 
 project info:
 purpose of this project is to write implementation of 2D game of life

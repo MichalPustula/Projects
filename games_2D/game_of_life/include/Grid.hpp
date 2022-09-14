@@ -15,7 +15,7 @@ public:
     void clearGrid();
 
     int countNeighboursOfCell(bool state, int x, int y) const;
-    int countNeighboursOfCell(bool state, int index);
+    int countNeighboursOfCell(bool state, int index) const;
 
     void nextGeneration();
 
@@ -27,10 +27,10 @@ public:
     void setCellDL(int x, int y);
     void setCellL(int x, int y);
     void setCellUL(int x, int y);
-    // functions that were helpfull for testing and creating logic of countNeighbours... method
+    // functions that were helpfull for testing and creating logic of countNeighbours...()
 
 private:
-    int m_length{};
-    int m_height{};
+    const int m_length{};
+    const int m_height{};
     std::vector<bool> m_cells{};
 };

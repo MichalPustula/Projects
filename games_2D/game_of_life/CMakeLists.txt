@@ -17,10 +17,19 @@ target_include_directories(game_of_life_tests PUBLIC include)
 target_link_libraries(game_of_life_tests gmock_main gtest gmock)
 target_compile_features(game_of_life_tests PUBLIC cxx_std_20)
 
-
 add_custom_target(run_tests
                   COMMAND game_of_life_tests
                   DEPENDS game_of_life_tests)
+
+
+add_executable(game_of_life src/main.cpp src/Game.cpp uts/game_of_life_tests.cpp src/Grid.cpp)
+target_include_directories(game_of_life PUBLIC include)
+target_link_libraries(game_of_life gmock_main gtest gmock)
+target_compile_features(game_of_life PUBLIC cxx_std_20)
+
+add_custom_target(run_game
+                  COMMAND game_of_life
+                  DEPENDS game_of_life)
 
 enable_testing()
 add_test(tests game_of_life_tests)

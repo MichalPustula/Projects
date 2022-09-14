@@ -13,9 +13,6 @@ public:
     void play();
     void placeGlider(int x, int y);
 
-
-
-
 private:
 
 std::unique_ptr<Grid> m_grid = nullptr;

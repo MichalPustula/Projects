@@ -60,7 +60,7 @@ void Grid::nextGeneration()
     m_cells = next_generation;
 }
 
-int Grid::countNeighboursOfCell(bool state, int index)
+int Grid::countNeighboursOfCell(bool state, int index) const
 {
     int x = (index + 1) - ((index / m_length)*m_length);
     int y = (((index) / m_length ) + 1 );
