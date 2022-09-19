@@ -12,14 +12,14 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
-add_executable(tests uts/adapter_tests.cpp )
-target_include_directories(tests PUBLIC include)
-target_link_libraries(tests gmock_main gtest gmock)
-target_compile_features(tests PUBLIC cxx_std_20)
+add_executable(adapter_tests uts/adapter_tests.cpp )
+target_include_directories(adapter_tests PUBLIC include)
+target_link_libraries(adapter_tests gmock_main gtest gmock)
+target_compile_features(adapter_tests PUBLIC cxx_std_20)
 
 add_custom_target(run_tests
-                  COMMAND tests
-                  DEPENDS tests)
+                  COMMAND adapter_tests
+                  DEPENDS adapter_tests)
 
 enable_testing()
-add_test(tests game_of_life_tests)
+add_test(tests adapter_tests)
