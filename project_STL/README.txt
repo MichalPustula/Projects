@@ -1,0 +1,2 @@
+project info:
+purpose of this project is to replicate some data containers and functionalities of standard template library for learning purposes and furthermore to add some functionalities or structures that are not available in stl.
