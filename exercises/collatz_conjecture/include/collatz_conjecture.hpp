@@ -9,14 +9,14 @@ struct Result
 };
 
 
-uint32_t calculate_next_even(uint32_t arg)
+void calculate_next_even(uint32_t& arg)
 {
-    return arg/2;
+    arg = arg/2;
 }
 
-uint32_t calculate_next_odd(uint32_t arg)
+void calculate_next_odd(uint32_t& arg)
 {
-    return (3*arg) + 1;
+    arg = (3*arg) + 1;
 }
 
 Result calculate(const uint32_t arg)
@@ -33,11 +33,11 @@ Result calculate(const uint32_t arg)
 
         if (current_val % 2 == 0)
         {
-            current_val = calculate_next_even(current_val);
+            calculate_next_even(current_val);
         }
         else
         {
-            current_val = calculate_next_odd(current_val);
+            calculate_next_odd(current_val);
         }
     }
     return result;

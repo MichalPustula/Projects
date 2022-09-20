@@ -26,10 +26,14 @@ TEST(series_tests, calculateSeriesExample1)
 
 TEST(series_tests, calculate_odd)
 {
-    EXPECT_EQ(calculate_next_odd(3), 10);
+    uint32_t temp = 3;
+    calculate_next_odd(temp);
+    EXPECT_EQ(temp, 10);
 }
 
 TEST(series_tests, calculate_even)
 {
-    EXPECT_EQ(calculate_next_even(4), 2);
+    uint32_t temp = 4;
+    calculate_next_even(temp);
+    EXPECT_EQ(temp, 2);
 }
