@@ -1,0 +1,1 @@
+Write FizzBuzz with 2 if statements, else count as 1;
