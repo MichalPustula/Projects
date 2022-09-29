@@ -4,7 +4,7 @@ to compile and run on linux: (requires gtest, CMake, gcc)
 - open terminal in build folder
 
 in terminal type:
-$ cmake ..
+- $ cmake ..
 - $ make run_tests
 
 

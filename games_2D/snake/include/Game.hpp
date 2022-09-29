@@ -11,6 +11,11 @@ class Game
 public:
     Game();
 
+    void printWorld() const;
+    void placeSnake();
+    void placeFood();
+    void nextStep();
+    void moveSnake();
     void play();
 
 private:

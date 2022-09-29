@@ -12,7 +12,7 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
-add_executable(snake_tests src/Game.cpp uts/snake_tests.cpp src/World.cpp)
+add_executable(snake_tests uts/snake_tests.cpp src/World.cpp src/Snake.cpp src/Game.cpp)
 target_include_directories(snake_tests PUBLIC include)
 target_link_libraries(snake_tests gmock_main gtest gmock)
 target_compile_features(snake_tests PUBLIC cxx_std_20)
