@@ -1,29 +1,20 @@
 #include "../include/Node.hpp"
 
-Node::Node(int data): next{nullptr}, data{data} {}
+Node::Node(int data): m_next(nullptr), m_data(data) {}
 Node::~Node() {}
 
-int Node::getData() const
+int& Node::getData()
 {
-    return data;
+    return m_data;
 }
 
-void Node::addNode(int value) //problem: isn't it dumb to addNode at the end of list?
-{
-    if (next == nullptr)
-    {
-        next = new Node(value);
-        return;
-    }
-    next->addNode(value);
-}
 
 void Node::print()
 {
-    std::cout << data << " ";
-    if (next != nullptr)
+    std::cout << m_data << " ";
+    if (m_next != nullptr)
     {
-        next->print();
+        m_next->print();
     }
 }
 

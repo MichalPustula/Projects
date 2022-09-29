@@ -41,9 +41,9 @@ TEST(Forward_listTests, BeginFunction)
 {
     Forward_list list;
     list.push_front(1);
+    EXPECT_EQ(list.front(), 1);
     list.push_front(2);
-    int temp = list.begin()->getData();
-    EXPECT_EQ(temp, 2);
+    EXPECT_EQ(list.front(), 2);
 }
 
 

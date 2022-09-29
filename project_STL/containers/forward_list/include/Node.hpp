@@ -8,13 +8,12 @@ public:
     Node(int data);
     ~Node();
     
-    int getData() const;
-    void addNode(int value);
+    int& getData();
     void print();
     
 public:
-Node* next;
+Node* m_next{};
 private:
-int data;
+int m_data{};
 
 };

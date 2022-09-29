@@ -16,11 +16,9 @@ public:
     
     void print();  
     
-    int front();
-
-    Node* begin();
+    int& front();
 
 private:
-    Node* head;
+    Node* m_head{};
 };
  
