@@ -1,1 +1,12 @@
 Not really project, just place for more important coding exercises
+
+
+to compile and run on linux: (requires gtest, CMake, gcc)
+
+- in the exercise (fe. fizz_buzz_with2if) folder create build folder
+- open terminal in build folder
+
+in terminal type:
+$ cmake ..
+
+- $ make run_tests
