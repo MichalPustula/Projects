@@ -16,7 +16,7 @@ void World::setFieldState(const Field field, FieldState fieldState)
     m_fieldStates.at(field.y).at(field.x) = fieldState;
 }
 
-void World::printWorld()
+void World::printWorld() const
 {
     for (size_t i = 0; i < m_fieldStates.size(); i++)
     {

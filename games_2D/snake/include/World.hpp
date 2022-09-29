@@ -20,7 +20,7 @@ public:
     World(int length, int height);
     FieldState getFieldState(const Field field) const;
     void setFieldState(const Field field, FieldState fieldState);
-    void printWorld();
+    void printWorld() const;
 
 
 private:
