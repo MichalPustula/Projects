@@ -9,36 +9,61 @@ public:
         realloc(2);
     }
 
-    // push_back(T data)
-    // {
-
-    // }
-
-    size_t capacity()
+    void push_back(const T& input)
     {
-        return m_capacity;
+        if (m_size >= m_capacity)
+        {
+            realloc(m_capacity + m_capacity);
+        }
+
+        m_data[m_size] = input;
+        m_size++;
     }
+
+    void push_back(T&& input)
+    {
+        if (m_size >= m_capacity)
+        {
+            realloc(m_capacity + m_capacity);
+        }
+
+        m_data[m_size] = std::move(input);
+        m_size++;
+    }
+
+    size_t size() const { return m_size; }
+    size_t capacity() const { return m_capacity; }
+
+
+    const T& operator[](size_t index) const
+    {
+        return m_data[index];
+    }
+
+    T& operator[](size_t index)
+    {
+        return m_data[index];
+    }
+
 private:
 
-void realloc(size_t new_capacity)
-{
-    T* new_block = new T[new_capacity];
-
-    for (size_t i = 0; i < m_size; i++)
+    void realloc(size_t new_capacity)
     {
-    new_block[i] = m_data[i];
+        T* new_memory = new T[new_capacity];
+
+        for (size_t i = 0; i < m_size; i++)
+        {
+            new (&new_memory[i]) T(std::move(m_data[i]));
+        }
+        
+        delete[] m_data;
+        m_data = new_memory;
+        m_capacity = new_capacity;
     }
-    
-    delete m_data;
-    m_data = new_block;
-    m_capacity = new_capacity;
-}
-
-
 
 private:
-T* m_data = nullptr;
+    T* m_data = nullptr;
 
-size_t m_size = 0;
-size_t m_capacity = 0;
+    size_t m_size = 0;
+    size_t m_capacity = 0;
 };

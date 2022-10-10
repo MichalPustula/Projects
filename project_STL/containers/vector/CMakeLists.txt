@@ -12,15 +12,15 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
-add_executable(VectorTests uts/VectorTests.cpp)
-target_include_directories(VectorTests PUBLIC include)
-target_link_libraries(VectorTests gmock_main gtest gmock)
-target_compile_features(VectorTests PUBLIC cxx_std_20)
+add_executable(Vector_tests uts/Vector_tests.cpp)
+target_include_directories(Vector_tests PUBLIC include)
+target_link_libraries(Vector_tests gmock_main gtest gmock)
+target_compile_features(Vector_tests PUBLIC cxx_std_20)
 
 
 add_custom_target(run_tests
-                  COMMAND VectorTests
-                  DEPENDS VectorTests)
+                  COMMAND Vector_tests
+                  DEPENDS Vector_tests)
 
 enable_testing()
-add_test(tests VectorTests)
+add_test(tests Vector_tests)
