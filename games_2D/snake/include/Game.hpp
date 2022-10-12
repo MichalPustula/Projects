@@ -4,6 +4,7 @@
 #include "../include/Snake.hpp"
 
 #include <memory>
+#include <string>
 
 enum class GameState{Running, Stopped, Defeat, Victory};
 
@@ -18,6 +19,7 @@ public:
     void placeWall(Field field);
     void nextStep();
     void moveSnake();
+    void growSnake();
     void play();
 
 private:

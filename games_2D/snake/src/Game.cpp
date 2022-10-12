@@ -59,6 +59,12 @@ void Game::moveSnake()
     m_world->setFieldState(m_snake->front(), FieldState::Snake);
 }
 
+void Game::growSnake()
+{
+    m_snake->addHead(m_snake->calculateNextSegment());
+    m_world->setFieldState(m_snake->front(), FieldState::Snake);
+}
+
 void Game::nextStep()
 {
     if (m_world->getFieldState(m_snake->calculateNextSegment()) == FieldState::Wall)
@@ -66,31 +72,40 @@ void Game::nextStep()
         m_gameState = GameState::Defeat;
         return;
     }
+
+    if (m_world->getFieldState(m_snake->calculateNextSegment()) == FieldState::Food)
+    {
+        growSnake();
+        return;
+    }
+
     moveSnake();
 }
 
 void Game::play()
 {
-    printWorld();
-
+    std::cout << std::endl;
+    std::cout << "temp interface: w,a,s,d to control, enter to iterate, q to quit " << std::endl;
+    placeFood(Field(6,6));
     while(m_gameState == GameState::Running)
     {
+        printWorld();
         getUserInput();
         nextStep();
-        printWorld();
     }
 }
 
 void Game::getUserInput()
 {
-    char userInput = std::cin.get();
+    std::string userInput = "";
+    std::getline(std::cin, userInput);
+    if (userInput.length() == 0) { return; }
+    if (userInput == "q") { m_gameState = GameState::Defeat; return; }
 
-    if (userInput == 'q') { m_gameState = GameState::Defeat; return; }
-
-    if (userInput == 'w') { m_snake->setDirection(Direction::Up); return; }
-    if (userInput == 'a') { m_snake->setDirection(Direction::Left); return; }
-    if (userInput == 's') { m_snake->setDirection(Direction::Down); return; }
-    if (userInput == 'd') { m_snake->setDirection(Direction::Right); return; }
+    if (userInput == "w") { m_snake->setDirection(Direction::Up); return; }
+    if (userInput == "a") { m_snake->setDirection(Direction::Left); return; }
+    if (userInput == "s") { m_snake->setDirection(Direction::Down); return; }
+    if (userInput == "d") { m_snake->setDirection(Direction::Right); return; }
 
     return;
 }
