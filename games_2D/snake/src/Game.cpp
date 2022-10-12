@@ -73,14 +73,70 @@ void Game::nextStep()
         return;
     }
 
+    if (m_world->getFieldState(m_snake->calculateNextSegment()) == FieldState::Snake)
+    {
+        m_gameState = GameState::Defeat;
+        return;
+    }
+
     if (m_world->getFieldState(m_snake->calculateNextSegment()) == FieldState::Food)
     {
         growSnake();
+        placeNewFood();
         return;
     }
 
     moveSnake();
 }
+
+void Game::placeNewFood()
+{
+    int bx = m_snake->back().x;
+    int by = m_snake->back().y;
+
+    for (int i = -4; i < 4; i++)
+    {
+        for (int j = 4; j > (-4); j--)
+        {
+            if (tryPlaceRandomFood(bx, by, (i + bx), (i - by) ) == true)
+            {
+                return;
+            }
+        }
+    } 
+
+    for (int i = 0; i < m_lenght; i++)
+    {
+        for (int j = 0; j < m_heigth; j++)
+        {
+            if (m_world->getFieldState(Field(i, j)) == FieldState::Empty)
+            {
+                placeFood(Field(i, j));
+                return;
+            }
+        }
+    }
+}
+
+
+bool Game::tryPlaceRandomFood(int bx, int fy, int arg1 , int arg2 )
+{
+    int x = bx + arg1;
+    int y = fy + arg2;
+
+    if (x >= 1 && y >= 1 && x < m_lenght - 1 && y < m_heigth - 1)
+    {
+        if (m_world->getFieldState(Field(x, y)) == FieldState::Empty)
+        {
+            placeFood(Field(x,y));
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
 
 void Game::play()
 {

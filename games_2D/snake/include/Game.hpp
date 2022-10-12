@@ -20,12 +20,13 @@ public:
     void nextStep();
     void moveSnake();
     void growSnake();
+    void placeNewFood();
     void play();
 
 private:
     void drawWall() ; 
     void getUserInput();
-
+    bool tryPlaceRandomFood(int bx, int by, int arg1 , int arg2 );
 
 private:
 
