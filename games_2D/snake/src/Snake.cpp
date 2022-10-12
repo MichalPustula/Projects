@@ -25,14 +25,14 @@ void Snake::setDirection(Direction direction)
     {m_direction = Direction::Right;}
 }
 
-Field Snake::calculateNextSegment(Direction direction)
+Field Snake::calculateNextSegment()
 {
     Field nextSegment = m_segments.front();
     
-    if (direction == Direction::Right)  { nextSegment.x = nextSegment.x + 1; }
-    if (direction == Direction::Left) { nextSegment.x = nextSegment.x -1; }
-    if (direction == Direction::Up) { nextSegment.y = nextSegment.y + 1; }
-    if (direction == Direction::Down) { nextSegment.y = nextSegment.y - 1; }
+    if (m_direction == Direction::Right)  { nextSegment.x = nextSegment.x + 1; }
+    if (m_direction == Direction::Left) { nextSegment.x = nextSegment.x -1; }
+    if (m_direction == Direction::Up) { nextSegment.y = nextSegment.y + 1; }
+    if (m_direction == Direction::Down) { nextSegment.y = nextSegment.y - 1; }
 
     return nextSegment;
 }

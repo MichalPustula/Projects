@@ -7,9 +7,8 @@
 
 TEST(SnakeTests, placingSnakeplacingFoodPrintingWorld)
 {
-    Game game;
-    game.placeSnake();
-    game.placeFood();
+    Game game(12,10);
+    game.placeFood(Field(6,6));
     game.printWorld();
     std::cout << std::endl;
     game.moveSnake();
@@ -51,7 +50,6 @@ TEST(GridTests, printingSnakeWorld)
 {
     World world(10,8);
     world.setFieldState({0,0}, FieldState::Food);
-    world.printWorld();
 }
 
 TEST(GridTests, creatingSnakeWorldSetingField)

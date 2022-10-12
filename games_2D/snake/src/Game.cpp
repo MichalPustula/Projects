@@ -1,9 +1,12 @@
 #include "../include/Game.hpp"
 
-Game::Game()
+Game::Game(int lenght, int heigth) : m_lenght(lenght), m_heigth(heigth)
 {
     m_snake = std::make_unique<Snake>();
-    m_world = std::make_unique<World>(10,8);
+    m_world = std::make_unique<World>(lenght, heigth);
+
+    drawWall();
+    placeSnake();
 }
 
 void Game::placeSnake()
@@ -14,10 +17,29 @@ void Game::placeSnake()
     }
 }
 
-void Game::placeFood()
+void Game::placeWall(Field field)
 {
-    Field temp{6,6};
-    m_world->setFieldState(temp, FieldState::Food);
+    m_world->setFieldState(field, FieldState::Wall);
+}
+
+void Game::placeFood(Field field)
+{
+    m_world->setFieldState(field, FieldState::Food);
+}
+
+void Game::drawWall()
+{
+    for (int i = 0; i < m_lenght; i++)
+    {
+        placeWall(Field(i, 0));
+        placeWall(Field(i, (m_heigth-1)));
+    }
+
+    for (int i = 0; i < m_heigth; i++)
+    {
+        placeWall(Field(0, i));
+        placeWall(Field((m_lenght-1), i));
+    }
 }
 
 void Game::printWorld() const
@@ -30,7 +52,7 @@ void Game::moveSnake()
     m_world->setFieldState(m_snake->back(), FieldState::Empty);
     m_snake->removeTail();
 
-    m_snake->addHead(m_snake->calculateNextSegment(Direction::Down));
+    m_snake->addHead(m_snake->calculateNextSegment());
     m_world->setFieldState(m_snake->front(), FieldState::Snake);
 }
 
@@ -43,6 +65,6 @@ void Game::nextStep()
 void Game::play()
 {
     placeSnake();
-    placeFood();
+    placeFood(Field(6,6));
 }
 

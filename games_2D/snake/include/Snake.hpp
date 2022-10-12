@@ -12,7 +12,7 @@ public:
     Snake();
     void setDirection(Direction direction);
     Direction getDirection() const;
-    Field calculateNextSegment(Direction direction);
+    Field calculateNextSegment();
     void removeTail();
     void addHead(Field segment);
     Field front();

@@ -22,14 +22,29 @@ void World::printWorld() const
     {
         for (size_t j = 0; j < m_fieldStates.at(0).size();j++)
         {
+            if (m_fieldStates.at(i).at(j) == FieldState::Empty)
+            {
+                std::cout << " . ";
+                continue;
+            }
+
+            if (m_fieldStates.at(i).at(j) == FieldState::Wall)
+            {
+                std::cout << " # ";
+                continue;
+            }
+
             if (m_fieldStates.at(i).at(j) == FieldState::Snake)
-            {std::cout << " o ";}
+            {
+                std::cout << " o ";
+                continue;
+            }
 
             if (m_fieldStates.at(i).at(j) == FieldState::Food)
-            {std::cout << " x ";}
-
-            if (m_fieldStates.at(i).at(j) == FieldState::Empty)
-            {std::cout << " . ";}
+            {
+                std::cout << " x ";
+                continue;
+            }
         }
         std::cout << '\n';
     }

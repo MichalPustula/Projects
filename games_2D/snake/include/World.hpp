@@ -4,13 +4,9 @@
 
 
 #include <iostream>
-#include <algorithm>
 #include <vector>
 
-enum class FieldState{Empty, Snake, Food};
-
-enum class GameState{Running, Stopped, Defeat, Victory};
-
+enum class FieldState{Empty, Snake, Food, Wall};
 
 
 class World
@@ -24,5 +20,6 @@ public:
     void printWorld() const;
 
 private:
+
     std::vector<std::vector<FieldState>> m_fieldStates{};
 };

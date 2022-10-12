@@ -5,20 +5,26 @@
 
 #include <memory>
 
-
 class Game
 {
 public:
-    Game();
+    Game(int lenght, int heigth);
 
     void printWorld() const;
     void placeSnake();
-    void placeFood();
+    void placeFood(Field field);
+    void placeWall(Field field);
     void nextStep();
     void moveSnake();
     void play();
 
 private:
+    void drawWall() ; 
+
+private:
+
+const int m_lenght{};
+const int m_heigth{};
 
 std::unique_ptr<Snake> m_snake = nullptr;
 std::unique_ptr<World> m_world = nullptr;
