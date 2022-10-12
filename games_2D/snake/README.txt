@@ -5,7 +5,12 @@ to compile and run on linux: (requires gtest, CMake, gcc)
 
 in terminal type:
 - $ cmake ..
+
+to run tests type:
 - $ make run_tests
+
+to run game type:
+- $ make run_game
 
 
 project info:

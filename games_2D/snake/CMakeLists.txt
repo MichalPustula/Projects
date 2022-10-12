@@ -21,5 +21,14 @@ add_custom_target(run_tests
                   COMMAND snake_tests
                   DEPENDS snake_tests)
 
+add_executable(snake_game src/main.cpp src/World.cpp src/Snake.cpp src/Game.cpp)
+target_include_directories(snake_game PUBLIC include)
+target_link_libraries(snake_game gmock_main gtest gmock)
+target_compile_features(snake_game PUBLIC cxx_std_20)
+
+add_custom_target(run_game
+                  COMMAND snake_game
+                  DEPENDS snake_game)
+
 enable_testing()
 add_test(tests game_of_life_tests)

@@ -4,7 +4,6 @@
 #include "../include/Game.hpp"
 
 
-
 TEST(SnakeTests, placingSnakeplacingFoodPrintingWorld)
 {
     Game game(12,10);

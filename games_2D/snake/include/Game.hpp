@@ -5,6 +5,8 @@
 
 #include <memory>
 
+enum class GameState{Running, Stopped, Defeat, Victory};
+
 class Game
 {
 public:
@@ -20,6 +22,8 @@ public:
 
 private:
     void drawWall() ; 
+    void getUserInput();
+
 
 private:
 
@@ -28,4 +32,5 @@ const int m_heigth{};
 
 std::unique_ptr<Snake> m_snake = nullptr;
 std::unique_ptr<World> m_world = nullptr;
+GameState m_gameState{};
 };

@@ -1,6 +1,9 @@
 #include "../include/Game.hpp"
 
-Game::Game(int lenght, int heigth) : m_lenght(lenght), m_heigth(heigth)
+Game::Game(int lenght, int heigth) : 
+m_lenght(lenght), 
+m_heigth(heigth), 
+m_gameState(GameState::Running)
 {
     m_snake = std::make_unique<Snake>();
     m_world = std::make_unique<World>(lenght, heigth);
@@ -58,13 +61,37 @@ void Game::moveSnake()
 
 void Game::nextStep()
 {
-
-
+    if (m_world->getFieldState(m_snake->calculateNextSegment()) == FieldState::Wall)
+    {
+        m_gameState = GameState::Defeat;
+        return;
+    }
+    moveSnake();
 }
 
 void Game::play()
 {
-    placeSnake();
-    placeFood(Field(6,6));
+    printWorld();
+
+    while(m_gameState == GameState::Running)
+    {
+        getUserInput();
+        nextStep();
+        printWorld();
+    }
+}
+
+void Game::getUserInput()
+{
+    char userInput = std::cin.get();
+
+    if (userInput == 'q') { m_gameState = GameState::Defeat; return; }
+
+    if (userInput == 'w') { m_snake->setDirection(Direction::Up); return; }
+    if (userInput == 'a') { m_snake->setDirection(Direction::Left); return; }
+    if (userInput == 's') { m_snake->setDirection(Direction::Down); return; }
+    if (userInput == 'd') { m_snake->setDirection(Direction::Right); return; }
+
+    return;
 }
 

@@ -31,8 +31,8 @@ Field Snake::calculateNextSegment()
     
     if (m_direction == Direction::Right)  { nextSegment.x = nextSegment.x + 1; }
     if (m_direction == Direction::Left) { nextSegment.x = nextSegment.x -1; }
-    if (m_direction == Direction::Up) { nextSegment.y = nextSegment.y + 1; }
-    if (m_direction == Direction::Down) { nextSegment.y = nextSegment.y - 1; }
+    if (m_direction == Direction::Up) { nextSegment.y = nextSegment.y - 1; }
+    if (m_direction == Direction::Down) { nextSegment.y = nextSegment.y + 1; }
 
     return nextSegment;
 }
