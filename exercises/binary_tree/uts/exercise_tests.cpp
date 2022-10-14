@@ -13,7 +13,7 @@ TEST(BinaryTreeTests, printTree)
     binaryTree.insert(7);
     binaryTree.insert(8);
 
-    binaryTree.printTree();
+    binaryTree.print();
 }
 
 TEST(BinaryTreeTests, creatingEmptyContainerInsertingElementsToLeftBranch)
@@ -52,6 +52,23 @@ TEST(BinaryTreeTests, creatingEmptyContainerInserting3Elements)
     EXPECT_EQ(binaryTree.m_root->m_right->getData(), 6);
 }
 
+TEST(BinaryTreeTests, heightOfBinaryTree)
+{
+    BinaryTree binaryTree;
+
+    EXPECT_EQ(binaryTree.height(), 0);
+    binaryTree.insert(5);
+    EXPECT_EQ(binaryTree.height(), 1);
+
+    binaryTree.insert(6);
+    EXPECT_EQ(binaryTree.height(), 2);
+
+    binaryTree.insert(4);
+    EXPECT_EQ(binaryTree.height(), 2);
+
+    binaryTree.insert(7);
+    EXPECT_EQ(binaryTree.height(), 3);
+}
 
 TEST(BinaryTreeTests, creatingEmptyContainerInserting1Elements)
 {

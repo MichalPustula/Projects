@@ -18,7 +18,6 @@ int Node::getData() const
     return m_data;
 }
 
-
 void Node::addNode(int val)
 {
     if(val < m_data)
@@ -37,21 +36,9 @@ void Node::addNode(int val)
     }
 }
 
-void Node::print(Node* node)
+int Node::depth() const 
 {
-    if(node == nullptr) {return;}
-    
-    std::cout << "Data: " << m_data << '\n';
-
-    if (m_left!= nullptr)
-    {
-        std::cout << "L";
-        print(m_left);
-    }
-
-    if (m_right!= nullptr)
-    {
-        std::cout << "R";
-        print(m_left);
-    }
+    const int left_depth = m_left ? m_left->depth() : 0;
+    const int right_depth = m_right ? m_right->depth() : 0;
+    return (left_depth > right_depth ? left_depth : right_depth) + 1;
 }

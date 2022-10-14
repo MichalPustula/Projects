@@ -16,6 +16,29 @@ void BinaryTree::insert(int val)
     else                  {m_root->addNode(val);}
 }
 
-void BinaryTree::printTree()
+int BinaryTree::height()
 {
+    if (m_root == nullptr) { return 0; }
+    return m_root->depth();
+}
+
+
+void BinaryTree::print()
+{
+    print(m_root, false, "");    
+}
+
+void BinaryTree::print(const Node* node, bool isLeft, const std::string prefix)
+{
+    if( node != nullptr )
+    {
+        std::cout << prefix;
+
+        std::cout << (isLeft ? "├──" : "└──" );
+
+        std::cout << node->getData() << std::endl;
+
+        print(node->m_left, true, prefix + (isLeft ? "│   " : "    "));
+        print(node->m_right, false, prefix + (isLeft ? "│   " : "    "));
+    }
 }
