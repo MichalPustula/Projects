@@ -45,6 +45,17 @@ public:
         return m_data[index];
     }
 
+    T& at(size_t index) 
+    { 
+        if (index < size()) {return m_data[index];}
+        else {throw (std::out_of_range("Out of range"));}
+    }
+    const T& at(size_t index) const 
+    { 
+        if (index < size()) {return m_data[index];}
+        else {throw (std::out_of_range("Out of range"));}
+    }
+
 private:
 
     void realloc(size_t new_capacity)
