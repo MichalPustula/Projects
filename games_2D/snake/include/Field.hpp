@@ -7,4 +7,12 @@ struct Field
 
     int x;
     int y;
+
+    bool operator ==(const Field& rhs)
+    {
+        if (this->x == rhs.x && this->y == rhs.y) {return true;}
+        else { return false;}
+    }
+
 };
+

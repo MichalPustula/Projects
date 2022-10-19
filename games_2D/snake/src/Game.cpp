@@ -75,7 +75,7 @@ void Game::nextStep()
 
     if (m_world->getFieldState(m_snake->calculateNextSegment()) == FieldState::Snake)
     {
-        m_gameState = GameState::Defeat;
+        cutTail(m_snake->calculateNextSegment());
         return;
     }
 
@@ -96,14 +96,11 @@ void Game::placeNewFood()
 
     for (int i = -4; i < 4; i++)
     {
-        for (int j = 4; j > (-4); j--)
+        if (tryPlaceRandomFood(bx+i, by-i) == true)
         {
-            if (tryPlaceRandomFood(bx, by, (i + bx), (i - by) ) == true)
-            {
-                return;
-            }
+            return;
         }
-    } 
+    }
 
     for (int i = 0; i < m_lenght; i++)
     {
@@ -119,11 +116,8 @@ void Game::placeNewFood()
 }
 
 
-bool Game::tryPlaceRandomFood(int bx, int fy, int arg1 , int arg2 )
+bool Game::tryPlaceRandomFood(int x, int y)
 {
-    int x = bx + arg1;
-    int y = fy + arg2;
-
     if (x >= 1 && y >= 1 && x < m_lenght - 1 && y < m_heigth - 1)
     {
         if (m_world->getFieldState(Field(x, y)) == FieldState::Empty)
@@ -136,18 +130,34 @@ bool Game::tryPlaceRandomFood(int bx, int fy, int arg1 , int arg2 )
     return false;
 }
 
-
+void Game::cutTail(Field field)
+{
+    while(true)
+    {
+        if(m_snake->back() == field)
+        {
+            moveSnake();
+            return;
+        }
+        else 
+        {
+            m_world->setFieldState(m_snake->back(), FieldState::Empty);
+            m_snake->removeTail();
+        }
+    }
+}
 
 void Game::play()
 {
     std::cout << std::endl;
     std::cout << "temp interface: w,a,s,d to control, enter to iterate, q to quit " << std::endl;
-    placeFood(Field(6,6));
+    placeFood(Field(m_lenght/2, m_heigth/2));
     while(m_gameState == GameState::Running)
     {
         printWorld();
         getUserInput();
         nextStep();
+        clearConsole();
     }
 }
 
@@ -165,4 +175,11 @@ void Game::getUserInput()
 
     return;
 }
+
+void Game::clearConsole()
+{
+    system("clear");
+}
+
+
 

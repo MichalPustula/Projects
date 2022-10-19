@@ -22,11 +22,13 @@ public:
     void growSnake();
     void placeNewFood();
     void play();
+    void clearConsole();
+    void cutTail(Field field);
 
 private:
     void drawWall() ; 
     void getUserInput();
-    bool tryPlaceRandomFood(int bx, int by, int arg1 , int arg2 );
+    bool tryPlaceRandomFood(int x, int y);
 
 private:
 
